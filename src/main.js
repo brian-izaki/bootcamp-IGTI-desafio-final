@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Portal from './components/Portal.vue'
+import './assets/css/index.css';
 
 Vue.config.productionTip = false
 

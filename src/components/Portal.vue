@@ -1,7 +1,7 @@
 <template>
     <section class="portal-container">
         <div>
-            <h3 style="text-align: center;">Faça a viagem dos seus sonhos!</h3>
+            <h3 class="btn">Faça a viagem dos seus sonhos!</h3>
             
             <p>Use milhas para ter os melhores pacotes de viagens e aproveite suas férias!</p>
         </div>
@@ -243,33 +243,7 @@ export default {
 </script>
 
 <style scoped>
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type='number'] {
-    -moz-appearance: textfield;
-}
-
-.portal-container {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    display: flex;
-}
-
-.form-container, .resume-container {
-    border: 1px solid #afafaf;
-    padding: 10px;
-    margin: 10px;
+.btn {
+    @apply text-center;
 }
 </style>
