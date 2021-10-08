@@ -1,75 +1,94 @@
 <template>
-    <section class="portal-container">
-        <div>
-            <h3 class="btn">Faça a viagem dos seus sonhos!</h3>
-            
-            <p>Use milhas para ter os melhores pacotes de viagens e aproveite suas férias!</p>
+    <section class="container mx-auto">
+        <div class="mt-4 text-center">
+            <h2 class="text-3xl mb-4">Faça a viagem dos seus sonhos!</h2>
+
+            <p>
+                Use milhas para ter os melhores pacotes de viagens e aproveite
+                suas férias!
+            </p>
         </div>
 
-        <div class="container">
-            <form class="form-container">
-                <div>
-                    <label for="originCountry">País de origem:</label>
-                    <select v-model="form.originCountry" id="originCountry">
-                        <option value="">Escolha o país de origem</option>
-                        <option
-                            v-for="(country, index) in countriesOpt"
-                            :key="index"
-                            :value="country.name"
+        <div class="flex items-start justify-center gap-24 mt-4">
+            <form class="dataContainer">
+                <div class="flex gap-5">
+                    <div class="select-data">
+                        <label for="originCountry">País de origem:</label>
+                        <select
+                            v-model="form.originCountry"
+                            id="originCountry"
+                            class="form-select select-item"
                         >
-                            {{ country.name }}
-                        </option>
-                    </select>
+                            <option value="">Escolha o país de origem</option>
+                            <option
+                                v-for="(country, index) in countriesOpt"
+                                :key="index"
+                                :value="country.name"
+                            >
+                                {{ country.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="select-data">
+                        <label for="originCity">Cidade de origem:</label>
+                        <select
+                            v-model="form.originCity"
+                            :disabled="!hasOriginCountry"
+                            id="originCity"
+                            class="form-select select-item"
+                        >
+                            <option value="">Escolha a cidade de origem</option>
+                            <option
+                                v-for="(city, index) in citiesOpt"
+                                :key="index"
+                                :value="city.name"
+                            >
+                                {{ city.name }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="originCity">Cidade de origem:</label>
-                    <select
-                        v-model="form.originCity"
-                        :disabled="!hasOriginCountry"
-                        id="originCity"
-                    >
-                        <option value="">Escolha a cidade de origem</option>
-                        <option
-                            v-for="(city, index) in citiesOpt"
-                            :key="index"
-                            :value="city.name"
+                <div class="flex gap-5">
+                    <div class="select-data">
+                        <label for="destinyCountry">País de destino:</label>
+                        <select
+                            v-model="form.destinyCountry"
+                            id="destinyCountry"
+                            class="form-select select-item"
                         >
-                            {{ city.name }}
-                        </option>
-                    </select>
-                </div>
+                            <option value="">Escolha o país de destino</option>
+                            <option
+                                v-for="(country, index) in countriesOpt"
+                                :key="index"
+                                :value="country.name"
+                            >
+                                {{ country.name }}
+                            </option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label for="destinyCountry">País de destino:</label>
-                    <select v-model="form.destinyCountry" id="destinyCountry">
-                        <option value="">Escolha o país de destino</option>
-                        <option
-                            v-for="(country, index) in countriesOpt"
-                            :key="index"
-                            :value="country.name"
+                    <div class="select-data">
+                        <label for="destinyCity">Cidade de destino:</label>
+                        <select
+                            v-model="form.destinyCity"
+                            :disabled="!hasDestinyCountry"
+                            id="destinyCity"
+                            class="form-select select-item"
                         >
-                            {{ country.name }}
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="destinyCity">Cidade de destino:</label>
-                    <select
-                        v-model="form.destinyCity"
-                        :disabled="!hasDestinyCountry"
-                        id="destinyCity"
-                    >
-                        <option value="">Escolha a cidade de destino</option>
-                        <option
-                            v-for="(city, index) in citiesDestinyOpt"
-                            :key="index"
-                            :value="city.name"
-                        >
-                            {{ city.name }}
-                        </option>
-                    </select>
+                            <option value="">
+                                Escolha a cidade de destino
+                            </option>
+                            <option
+                                v-for="(city, index) in citiesDestinyOpt"
+                                :key="index"
+                                :value="city.name"
+                            >
+                                {{ city.name }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
                 <div>
@@ -131,7 +150,7 @@
                 </div>
             </form>
 
-            <div class="resume-container">
+            <div class="dataContainer">
                 <h4>Resumo da viagem</h4>
                 <p>Origem: {{ form.originCountry }} ({{ form.originCity }})</p>
                 <p>
@@ -243,7 +262,23 @@ export default {
 </script>
 
 <style scoped>
-.btn {
-    @apply text-center;
+.dataContainer {
+    @apply flex flex-col flex-nowrap gap-5;
+    @apply bg-purple-50 h-full p-5 rounded-sm;
+}
+
+.select-data {
+    @apply flex flex-col items-start gap-2;
+}
+
+.select-item {
+    @apply bg-gray-50 rounded-md p-2 pr-8 border-purple-500;
+}
+.select-item:focus {
+    @apply outline-none border-purple-600;
+}
+
+.select-item:disabled {
+    @apply opacity-50 bg-gray-50;
 }
 </style>
